@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>路虎快递单</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{url_for('static', filename='css/jumbotron-narrow.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/fileinput.min.css')}}" rel="stylesheet">
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+          </ul>
+        </nav>
+        <h3 class="text-muted">快递单反馈</h3>
+      </div>
+
+      <div class="jumbotron">
+        <h1>温馨提示</h1>
+        <p class="lead">请上传之后过一段时间刷新页面</p>
+        <p class="lead">联系qq: 372499885</p>
+      </div>
+
+      <div class="row marketing">
+        <form action="" method='POST' enctype="multipart/form-data">
+          <input id='input-file' type='file' name='excel' data-show-preview="false" data-allowed-file-extensions='["csv", "xlsx", "xls"]'/>
+        </form>
+      </div>
+
+      <table class="table table-condensed table-striped">
+        <tr>
+          <td>上传</td>
+          <td>下载</td>
+        </tr>
+        {% for r in rs %}
+          <tr>
+            <td>
+              <a href="{{r.upload_fp}}">{{r.upload_fp}}</a>
+            </td>
+            <td>
+              {%if r.status%}
+              <a href="{{r.upload_fp}}">{{r.upload_fp}}</a>
+              {%else%}
+              {{r.upload_fp}}
+              {%endif%}
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+
+      <footer class="footer">
+        <p>&copy; Company 2016</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{{url_for('static', filename='js/jquery-1.12.1.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/ie10-viewport-bug-workaround.js')}}"></script>
+    <script src="{{url_for('static', filename='js/fileinput.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/fileinput_locale_zh.js')}}"></script>
+    <script type='text/javascript'>
+    $(document).ready(function(){
+      $('#input-file').fileinput({'language':'zh'});
+    })
+    </script>
+  </body>
+</html>
+
