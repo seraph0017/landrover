@@ -52,13 +52,13 @@
         {% for r in rs %}
           <tr>
             <td>
-              <a href="{{r.upload_fp}}">{{r.upload_fp}}</a>
+              <a href="{{r.upload_fp | upurl}}">{{r.upload_fp | upname}}</a>
             </td>
             <td>
               {%if r.status%}
-              <a href="{{r.upload_fp}}">{{r.upload_fp}}</a>
+              <a href="{{r.download_fp | dwurl}}">{{r.download_fp | dwname}}</a>
               {%else%}
-              {{r.upload_fp}}
+              {{r.download_fp | dwname}}
               {%endif%}
             </td>
           </tr>

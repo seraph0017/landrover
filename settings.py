@@ -24,3 +24,4 @@ CELERY_DEFAULT_QUEUE            = "default"
 
 UPLOAD_FOLDER = os.path.join(BASE_DIR, 'src/uploads')
 DB_URI = 'mysql://root:123456@127.0.0.1/landrover'
+
