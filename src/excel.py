@@ -4,12 +4,16 @@
 import xlrd
 import xlwt
 
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 
 
 class Excel(object):
 
     def __init__(self, fpath):
-        self._data = xlrd.open_workbook(fpath)
+        self._data = xlrd.open_workbook(fpath.encode('utf-8'))
         self._sheet = self._data.sheets()[0]
 
 
@@ -36,7 +40,7 @@ class Wexcel(object):
 
 
     def save(self):
-        self._data.save(self._fpath)
+        self._data.save(self._fpath.encode('utf-8'))
 
 
 
