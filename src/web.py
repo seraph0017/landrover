@@ -2,7 +2,7 @@
 #encoding:utf-8
 
 from os.path import join
-from flask import render_template, request
+from flask import render_template, request, redirect, url_for
 from src import app
 from src.tasks import download
 from src.db import Record
@@ -16,6 +16,7 @@ def index_handler():
         if fi:
             fi.save(join(app.config['UPLOAD_FOLDER'],fi.filename))
             download.apply_async(args=(fi.filename,))
+        return redirect(url_for('index_handler'))
     rs = Record.query.order_by(Record.insert_time.desc()).limit(10).all()
     return render_template('__base.html', rs=rs)
 
