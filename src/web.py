@@ -33,8 +33,6 @@ def login_required(func):
 @app.route('/', methods=['GET','POST'])
 @login_required
 def index_handler():
-    print dir(request)
-    print request.cookies
     if request.method == 'POST':
         fi = request.files['excel']
         if fi:
@@ -51,7 +49,6 @@ def index_handler():
 def login_handler():
     if request.method == 'POST':
         pwd = request.form.get('password')
-        print pwd
         if pwd == PWD:
             resp = make_response(redirect(url_for('index_handler')))
             resp.set_cookie('pwd', PWD)
