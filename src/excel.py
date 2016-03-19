@@ -22,7 +22,7 @@ class Excel(object):
         r_list = []
         for i in range(3, nrows):
             r_list.append(self._sheet.row_values(i)[5])
-            if len(r_list) >= 10:
+            if len(r_list) >= 10 or (nrows - i) < 10:
                 yield r_list
                 r_list = []
 
